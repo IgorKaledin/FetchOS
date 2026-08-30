@@ -23,39 +23,16 @@ jobs:
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
+      - name: Make Scripts Executable
+        run: chmod +x ./scripts/*.sh
+
       - name: Build ISO inside Arch Linux Container
         run: |
-          mkdir -p out
-          
           docker run --rm --privileged \
             -v "${{ github.workspace }}:/workspace" \
             -w /workspace \
             archlinux:latest \
-            bash -c "
-              set -euo pipefail
-              
-              echo '==> Setting up mirrorlist...'
-              echo 'Server = https://geo.mirror.pkgbuild.com/\$repo/os/\$arch' > /etc/pacman.d/mirrorlist
-              echo 'Server = https://mirror.rackspace.com/archlinux/\$repo/os/\$arch' >> /etc/pacman.d/mirrorlist
-              
-              echo '==> Initializing Pacman Keyring...'
-              pacman-key --init
-              pacman-key --populate archlinux
-              
-              echo '==> Updating package database and keyrings...'
-              pacman -Sy --noconfirm archlinux-keyring
-              
-              echo '==> Installing build tools...'
-              pacman -Syu --noconfirm archiso squashfs-tools dosfstools e2fsprogs libisoburn util-linux
-              
-              echo '==> Starting Fetch OS ISO Build...'
-              mkarchiso -v -w /tmp/work -o /workspace/out /workspace/fetch-os-profile
-              
-              echo '==> Generating SHA256 Checksums...'
-              cd /workspace/out
-              sha256sum *.iso > fetch-os-checksums.sha256
-              ls -la /workspace/out
-            "
+            /workspace/scripts/ci-build.sh
 
       - name: Upload ISO Artifact
         uses: actions/upload-artifact@v4
