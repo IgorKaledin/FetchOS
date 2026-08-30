@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 
 iso_name="fetch-os"
-iso_label="FETCH_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
+iso_label="FETCH$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
 iso_publisher="Fetch OS Project <https://fetch-os.org>"
 iso_application="Fetch OS Live & Installation Media"
 iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"

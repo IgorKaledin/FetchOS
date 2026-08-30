@@ -23,16 +23,13 @@ jobs:
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
-      - name: Make Scripts Executable
-        run: chmod +x ./scripts/*.sh
-
       - name: Build ISO inside Arch Linux Container
         run: |
           docker run --rm --privileged \
             -v "${{ github.workspace }}:/workspace" \
             -w /workspace \
             archlinux:latest \
-            /workspace/scripts/ci-build.sh
+            bash /workspace/scripts/ci-build.sh
 
       - name: Upload ISO Artifact
         uses: actions/upload-artifact@v4
