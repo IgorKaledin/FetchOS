@@ -1,0 +1,18 @@
+# Build and temporary directories
+/work/
+/out/
+*.iso
+*.iso.sha256
+*.tar.gz
+*.tar.zst
+*.tmp
+
+# Upstream downloaded archives
+upstream/*.tar.gz
+upstream/*.zip
+
+# OS and Editor metadata
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

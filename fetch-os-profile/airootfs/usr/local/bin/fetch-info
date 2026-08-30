@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# Fetch OS System Info Banner (fetch-info)
+# ==============================================================================
+
+BOLD="\e[1m"
+CYAN="\e[38;2;23;147;209m"
+PURPLE="\e[38;2;170;90;250m"
+GREEN="\e[38;2;46;204;113m"
+WHITE="\e[37m"
+RESET="\e[0m"
+
+clear
+echo -e "${CYAN}${BOLD}"
+cat << "EOF"
+    ______     __       __       ____  _____
+   / ____/__  / /______/ /_     / __ \/ ___/
+  / /_  / _ \/ __/ ___/ __ \   / / / /\__ \ 
+ / __/ /  __/ /_/ /__/ / / /  / /_/ /___/ / 
+/_/    \___/\__/\___/_/ /_/   \____//____/  
+EOF
+echo -e "${RESET}"
+
+echo -e " ${PURPLE}${BOLD}Welcome to Fetch OS!${RESET} — High-Performance Rolling Distribution"
+echo -e " --------------------------------------------------"
+echo -e " ${CYAN}OS:${RESET}        Fetch OS Linux (x86_64)"
+echo -e " ${CYAN}Desktop:${RESET}   KDE Plasma 6 (Wayland)"
+echo -e " ${CYAN}Kernel:${RESET}    $(uname -r)"
+echo -e " ${CYAN}Host:${RESET}      $(hostname)"
+echo -e " ${CYAN}Uptime:${RESET}    $(uptime -p 2>/dev/null || uptime)"
+echo -e " --------------------------------------------------"
+echo -e " ${GREEN}* Live Mode:${RESET} Run ${BOLD}calamares${RESET} or click 'Install Fetch OS' on desktop to install."
+echo ""

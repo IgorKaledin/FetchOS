@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Install Fetch OS
+GenericName=Live System Installer
+Comment=Install Fetch OS permanently to your disk
+Exec=sudo calamares
+Icon=system-software-install
+Terminal=false
+Categories=System;
+StartupNotify=true

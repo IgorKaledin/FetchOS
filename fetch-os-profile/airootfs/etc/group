@@ -1,0 +1,9 @@
+root:x:0:root
+wheel:x:998:root,fetch
+audio:x:995:fetch
+video:x:986:fetch
+storage:x:988:fetch
+optical:x:990:fetch
+network:x:992:fetch
+input:x:987:fetch
+fetch:x:1000:fetch

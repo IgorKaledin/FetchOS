@@ -1,0 +1,11 @@
+NAME="Fetch OS"
+PRETTY_NAME="Fetch OS Linux"
+ID=fetchos
+ID_LIKE=arch
+BUILD_ID=rolling
+ANSI_COLOR="38;2;23;147;209"
+HOME_URL="https://fetch-os.org/"
+DOCUMENTATION_URL="https://docs.fetch-os.org/"
+SUPPORT_URL="https://forum.fetch-os.org/"
+BUG_REPORT_URL="https://github.com/fetch-os/fetch-os/issues"
+LOGO=fetch-os-logo

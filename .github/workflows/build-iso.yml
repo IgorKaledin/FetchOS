@@ -1,0 +1,53 @@
+name: Build Fetch OS ISO
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build-iso:
+    name: Build Fetch OS Live ISO
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build ISO inside Arch Linux Container
+        run: |
+          mkdir -p out
+          
+          # Run privileged Arch Linux container to execute mkarchiso with loop/overlayfs support
+          docker run --rm --privileged \
+            -v "${{ github.workspace }}:/workspace" \
+            -w /workspace \
+            archlinux:latest \
+            bash -c "
+              set -euo pipefail
+              echo '==> Updating package database and keyrings...'
+              pacman -Syu --noconfirm archlinux-keyring
+              
+              echo '==> Installing build tools (archiso, squashfs-tools, dosfstools, e2fsprogs)...'
+              pacman -S --noconfirm archiso squashfs-tools dosfstools e2fsprogs libisoburn util-linux
+              
+              echo '==> Starting Fetch OS ISO Build...'
+              mkarchiso -v -w /tmp/work -o /workspace/out /workspace/fetch-os-profile
+              
+              echo '==> Generating SHA256 Checksums...'
+              cd /workspace/out
+              sha256sum *.iso > fetch-os-checksums.sha256
+              ls -la /workspace/out
+            "
+
+      - name: Upload ISO Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fetch-os-x86_64-iso
+          path: |
+            out/*.iso
+            out/*.sha256
+          retention-days: 14
+          compression-level: 0
