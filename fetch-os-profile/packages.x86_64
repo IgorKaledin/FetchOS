@@ -28,6 +28,7 @@ sudo
 # --- Bootloader & EFI ---
 grub
 efibootmgr
+edk2-shell
 syslinux
 memtest86+
 memtest86+-efi
@@ -40,7 +41,6 @@ vulkan-icd-loader
 xf86-video-amdgpu
 xf86-video-ati
 xf86-video-nouveau
-xf86-video-vmware
 virtualbox-guest-utils
 open-vm-tools
 qemu-guest-agent
@@ -50,7 +50,6 @@ wayland-protocols
 
 # --- KDE Plasma Desktop Environment ---
 plasma-desktop
-plasma-wayland-session
 plasma-workspace
 plasma-nm
 plasma-pa
