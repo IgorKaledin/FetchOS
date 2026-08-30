@@ -2,9 +2,9 @@
 Type=Application
 Version=1.0
 Name=Install Fetch OS
-GenericName=Live System Installer
+GenericName=System Installer
 Comment=Install Fetch OS permanently to your disk
-Exec=sudo calamares
+Exec=konsole -e sudo archinstall
 Icon=system-software-install
 Terminal=false
 Categories=System;

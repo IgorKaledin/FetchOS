@@ -65,7 +65,6 @@ xdg-desktop-portal-kde
 breeze
 breeze-gtk
 breeze-icons
-ocean-sound-theme
 
 # --- KDE Essential Applications ---
 dolphin
@@ -85,7 +84,6 @@ zip
 
 # --- Audio & Multimedia ---
 pipewire
-pipewire-audio
 pipewire-alsa
 pipewire-pulse
 pipewire-jack
@@ -143,7 +141,7 @@ glxinfo
 
 # --- Installer & Live Support ---
 arch-install-scripts
-calamares
+archinstall
 gparted
 parted
 gptfdisk
